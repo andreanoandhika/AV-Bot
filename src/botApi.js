@@ -23,7 +23,7 @@ export default function BotApi() {
 
   this.getRamal = function() {
     let ramalan = [
-      "Berhati-hatilah hari ini adalah hari tersial mu",
+      "Kamu siapa ? :v",
       "Hari ini mungkin agak menyusahkan bagimu jadi berhati-hatilah",
       "Hari ini mungkin kamu akan menemukan jodohmu",
       "Hari ini mungkin akan sangat menguntungkan bagi keuanganmu",
@@ -63,7 +63,7 @@ export default function BotApi() {
           }
         }
       }).catch(e => {
-        reject("Request gagal atau halaman wikipedia tidak ditemukan");
+        reject("Halaman wikipedia tidak ditemukan");
       });
     });
   }
@@ -106,7 +106,7 @@ export default function BotApi() {
 
         resolve(cuaca);
       }).catch(err => {
-        reject("Request gagal atau kota tidak ditemukan");
+        reject("Kota tidak ditemukan");
       })
     });
   }
@@ -123,7 +123,7 @@ export default function BotApi() {
 
       youtubeSearch(keyword, options, (err ,result) => {
         if (err || result == undefined || result == [] || result.length <= 0) {
-          reject("Video tidak ditemukan atau LIMIT");
+          reject("Video tidak ditemukan");
         } else {
           let randomIndex = Math.round(Math.random() * result.length);
           let resultVideo = {
