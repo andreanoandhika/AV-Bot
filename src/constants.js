@@ -22,7 +22,7 @@ const constAPI = {
   "MASHAPE_LOVEMETERQUERY": "&sname=",
   "MASHAPE_APPKEY": "",
   "OSUAPI_KEY": "",
-  "KATOULEAVEIMG_URL": "https://image.ibb.co/kYhBYa/1d1827a76c94bfacc205047717824948279041b1_hq.jpg"
+  "KATOULEAVEIMG_URL": "https://wallscover.com/images/av-wallpaper-12.jpg"
 };
 
 export default constAPI;
