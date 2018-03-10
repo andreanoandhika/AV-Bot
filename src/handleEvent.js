@@ -23,7 +23,7 @@ export default class HandleEvent {
     };
 
     if(event.type === "join") {
-      return client.replyMessage(replyToken, Wrapper.replyText("Terima kasih telah mengundang bot ini.\n\nSilahkan ketik \"Katou keyword\" untuk melihat keyword."));
+      return client.replyMessage(replyToken, Wrapper.replyText("Terima kasih telah mengundang bot ini.\n\nSilahkan ketik \"AVBOT keyword\" untuk melihat keyword."));
     }
 
     if(event.type === "message") {
@@ -31,23 +31,23 @@ export default class HandleEvent {
 
       let msgText = event.message.text.toLowerCase();
 
-      if (msgText.includes("katou") == false) return Promise.resolve(null);
+      if (msgText.includes("avbot") == false) return Promise.resolve(null);
 
-      if(msgText === "katou") {
+      if(msgText === "avbot") {
         return client.getProfile(reqProfile.userId)
               .then(profile => client.replyMessage(replyToken, Wrapper.replyText(botApi.sendReply(profile.displayName))))
               .catch(err => client.replyMessage(replyToken, Wrapper.replyText(botApi.sendReply("Tanpa Nama"))));
       }
 
-      if(msgText === "katou keyword") {
+      if(msgText === "avbot keyword") {
         return client.replyMessage(replyToken, Wrapper.replyKeyword());
       }
 
-      if(msgText === "katou ramal") {
+      if(msgText === "avbot ramal") {
         return client.replyMessage(replyToken, Wrapper.replyText(botApi.getRamal()));
       }
 
-      if(msgText.includes("katou berapa")) {
+      if(msgText.includes("avbot berapa")) {
         let calcText = msgText.substr(13);
 
         if(calcText.length === 0) {
@@ -57,7 +57,7 @@ export default class HandleEvent {
         return client.replyMessage(replyToken, Wrapper.replyText(`Hasil dari ${ calcText } : ${ eval(calcText) }`));
       }
 
-      if(msgText.includes("katou apa itu")) {
+      if(msgText.includes("avbot apa itu")) {
         let keyword = msgText.substr(13);
 
         botApi.getWiki(keyword).then(result => {
@@ -67,7 +67,7 @@ export default class HandleEvent {
         });
       }
 
-      if(msgText.includes("katou cari gambar")) {
+      if(msgText.includes("avbot cari gambar")) {
         let keyword = msgText.substr(18);
         if (keyword.length <= 0) return client.replyMessage(replyToken, Wrapper.replyText("Silahkan masukan nama gambar yang ingin dicari"));
 
@@ -80,13 +80,13 @@ export default class HandleEvent {
         });
       }
 
-      if(msgText.includes("katou ucapkan selamat ulang tahun ke")) {
+      if(msgText.includes("avbot ucapkan selamat ulang tahun ke")) {
         let keyword = msgText.substr(37);
 
-        return client.replyMessage(replyToken, Wrapper.replyText(`Selamat ulang tahun ${ keyword } :D`));
+        return client.replyMessage(replyToken, Wrapper.replyText(`Selamat Ulang tahun ya ${ keyword } :v`));
       }
 
-      if(msgText.includes("katou cuaca")) {
+      if(msgText.includes("avbot cuaca")) {
         let keyword = msgText.substr(12);
 
         botApi.getWeather(keyword).then(result => {
@@ -96,7 +96,7 @@ export default class HandleEvent {
         });
       }
 
-      if(msgText.includes("katou cari video")) {
+      if(msgText.includes("avbot cari video")) {
         let keyword = msgText.substr(17);
         if (keyword.length <= 0) return client.replyMessage(replyToken, Wrapper.replyText("Silahkan masukan nama video yang ingin dicari"));
 
@@ -110,7 +110,7 @@ export default class HandleEvent {
       }
 
 
-      if(msgText.includes("katou stalk")) {
+      if(msgText.includes("avbot stalk")) {
         let keyword = msgText.substr(12);
         if (keyword.length <= 0) return client.replyMessage(replyToken, Wrapper.replyText("Silahkan masukan nama user instagram yang ingin dicari"));
 
@@ -121,7 +121,7 @@ export default class HandleEvent {
         });
       }
 
-      if(msgText.includes("katou terjemahkan")) {
+      if(msgText.includes("avbot terjemahkan")) {
         let text = msgText.substr(24).trim();
         let lang = msgText.slice(18, 24).trim();
 
@@ -134,7 +134,7 @@ export default class HandleEvent {
         });
       }
 
-      if(msgText.includes("katou cari lokasi")) {
+      if(msgText.includes("avbot cari lokasi")) {
         let keyword = msgText.substr(17).trim();
 
         if(keyword.length <= 0) return client.replyMessage(replyToken, Wrapper.replyText("Silahkan masukan lokasi yang ingin dicari"));
@@ -146,7 +146,7 @@ export default class HandleEvent {
         });
       }
 
-      if(msgText.includes("katou tulis")) {
+      if(msgText.includes("avbot tulis")) {
         let keyword = msgText.substr(12);
 
         if(keyword.length <= 0) return client.replyMessage(replyToken, Wrapper.replyText("Silahkan masukan teks yang ingin diubah"));
@@ -180,7 +180,7 @@ export default class HandleEvent {
 //         });
 //       }
 
-      if(msgText.includes("katou download musik")) {
+      if(msgText.includes("avbot download musik")) {
         let keyword = msgText.substr(21).trim();
 
         if(keyword.length <= 0) return client.replyMessage(replyToken, Wrapper.replyText("Silahkan masukan nama musiknya"));
@@ -192,7 +192,7 @@ export default class HandleEvent {
         });
       }
 
-      if(msgText.includes("katou lovemeter")) {
+      if(msgText.includes("avbot lovemeter")) {
         let keyword = msgText.substr(16).trim();
 
         if(keyword.length <= 0) return client.replyMessage(replyToken, Wrapper.replyText("Silahkan masukan nama pasangannya"));
@@ -204,12 +204,12 @@ export default class HandleEvent {
         });
       }
 
-      if (msgText === "katou anime quotes") {
+      if (msgText === "avbot anime quotes") {
         let quotesItem = botApi.getAnimeQuote();
         return client.replyMessage(replyToken, Wrapper.replyText(`\"${ quotesItem.quotesentence }\"\nBy : ${ quotesItem.quotecharacter }\nFrom :  ${ quotesItem.quoteanime }`));
       }
 
-      if(msgText.includes("katou osu")) {
+      if(msgText.includes("avbot osu")) {
         if(msgText.substr(10).trim().length === 0) return client.replyMessage(replyToken, Wrapper.replyText("Silahkan masukan modenya"));
         let keyword;
         let mode;
@@ -249,7 +249,7 @@ export default class HandleEvent {
         });
       }
 
-      if (msgText === "bye katou") {
+      if (msgText === "bye avbot") {
         return client.replyMessage(replyToken, [ Wrapper.replyText("Bye - Bye"), Wrapper.replyImg(constAPI.KATOULEAVEIMG_URL, constAPI.KATOULEAVEIMG_URL) ]).then(result => {
           if (source === "room") {
             client.leaveRoom(reqProfile.roomId);
